@@ -13,8 +13,9 @@ pros::MotorGroup back_right_mg({5, 6}, pros::MotorGearset::blue); // port 5 and 
 // init function runs when code runs
 void initialize() {
 	pros::lcd::initialize();
-	chassis.calibrate();
-	chassis.setPose(0, 0, 0);
+	
+	//chassis.calibrate();
+	//chassis.setPose(0, 0, 0);
 
 
 	back_left_mg.tare_position_all();
@@ -47,9 +48,9 @@ void autonomous() {}
 
 void opcontrol() {
 	while (true) {
-		int forward = master.get_analog(ANALOG_LEFT_Y); // forward / backward
-		int strafe = master.get_analog(ANALOG_LEFT_X); // strafe left / right (x-drive)
-		int turn = master.get_analog(ANALOG_RIGHT_X); // turn left / right
+		int forward = controller.get_analog(ANALOG_LEFT_Y); // forward / backward
+		int strafe = controller.get_analog(ANALOG_LEFT_X); // strafe left / right (x-drive)
+		int turn = controller.get_analog(ANALOG_RIGHT_X); // turn left / right
 
 
 		// X-Drive Kinematics
