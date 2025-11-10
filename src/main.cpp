@@ -1,12 +1,11 @@
 #include "main.h"
-#include "lemlib/api.hpp"
 
 // ===== MOTOR AND SENSOR DECLARATIONS =====
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
-pros::Motor front_left_motor(1, pros::MotorGearset::blue); // port 1 for front left motor
-pros::Motor front_right_motor(2, pros::MotorGearset::blue); // port 2 for front right motor
-pros::MotorGroup back_left_mg({3, 4}, pros::MotorGearset::blue); // port 3 and 4 for back motors
-pros::MotorGroup back_right_mg({5, 6}, pros::MotorGearset::blue); // port 5 and 6 for back motor
+pros::Motor front_left_motor(-15, pros::v5::MotorGears::blue); // port 1 for front left motor (blue 600 RPM)
+pros::Motor front_right_motor(20, pros::v5::MotorGears::blue); // port 2 for front right motor (blue 600 RPM)
+pros::MotorGroup back_left_mg({-1, -2}, pros::v5::MotorGears::blue); // port 3 and 4 for back motors (blue 600 RPM)
+pros::MotorGroup back_right_mg({9, 10}, pros::v5::MotorGears::blue); // port 5 and 6 for back motor (blue 600 RPM)
 
 
 
@@ -23,6 +22,7 @@ void initialize() {
 	front_left_motor.tare_position();
 	front_right_motor.tare_position();
 
+	/*
 	pros::Task screen_task([&]() {
         while (true) {
             pros::lcd::print(5, "X: %f", chassis.getPose().x);
@@ -31,6 +31,7 @@ void initialize() {
             pros::delay(50);
         }
     });
+	*/
 
 
 	
@@ -49,7 +50,7 @@ void autonomous() {}
 void opcontrol() {
 	while (true) {
 		int forward = controller.get_analog(ANALOG_LEFT_Y); // forward / backward
-		int strafe = controller.get_analog(ANALOG_LEFT_X); // strafe left / right (x-drive)
+		int strafe = -controller.get_analog(ANALOG_LEFT_X); // strafe left / right (x-drive)
 		int turn = controller.get_analog(ANALOG_RIGHT_X); // turn left / right
 
 
