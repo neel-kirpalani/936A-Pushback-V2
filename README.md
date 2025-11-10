@@ -1,16 +1,17 @@
-# 936A V2 - VEX V5 Robot Code
+# 936A V2 - VEX V5 Robot Codebase
 
 A PROS (PROS Robotics Operating System) project for a VEX V5 holonomic X-Drive robot.
 
 ## Overview
 
-This project contains the firmware code for a VEX V5 robot with an X-Drive (holonomic) drivetrain configuration. The robot uses four motors arranged in an X-Drive pattern, allowing for omnidirectional movement including forward/backward, strafing, and rotation.
+This project contains the firmware code for a VEX V5 robot with an X-Drive (holonomic) drivetrain configuration. The robot uses 6 motors arranged in an X-Drive pattern, allowing for omnidirectional movement including forward/backward, strafing, and rotation.
 
 ## Robot Configuration
+- Coming Soon
 
 ### Drivetrain
 - **Type**: X-Drive (Holonomic)
-- **Motors**: 4 motors with blue gear cartridges (600 RPM)
+- **Motors**: 6 motors with blue gear cartridges (4 x 600 RPM + 2 x Half-Motors)
 
 ### Motor Ports
 - **Front Left**: Port 15 (reversed)
@@ -36,10 +37,10 @@ This project contains the firmware code for a VEX V5 robot with an X-Drive (holo
 
 ### Build Commands
 # Build the project
-make
+pros make
 
 # Upload to robot
-pros upload## Code Structure
+`pros upload`
 
 - `src/main.cpp`: Main robot code with motor declarations and control logic
 - `include/`: Header files and PROS library includes
@@ -47,7 +48,7 @@ pros upload## Code Structure
 
 ## Control Scheme
 
-The robot uses standard VEX controller inputs:
+The robot uses standard VEX controller inputs for an X-Drive:
 - **Left Stick Y-Axis**: Forward/backward movement
 - **Left Stick X-Axis**: Strafing (left/right)
 - **Right Stick X-Axis**: Rotation (left/right)
@@ -63,8 +64,7 @@ The code implements standard X-Drive kinematics:
 ## Future Development
 
 - Autonomous routines (currently empty)
-- Odometry and position tracking (commented out)
-- LCD display for robot status
+- Drive Controls
 
 ## License
 
@@ -72,4 +72,4 @@ This project is for VEX Robotics competition use.
 
 ## Author
 
-936A V2 Team
+Neel Kirpalani and the 936A Robotics Team
