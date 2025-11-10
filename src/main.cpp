@@ -12,9 +12,6 @@ pros::MotorGroup back_right_mg({9, 10}, pros::v5::MotorGears::blue); // port 5 a
 // init function runs when code runs
 void initialize() {
 	pros::lcd::initialize();
-	
-	//chassis.calibrate();
-	//chassis.setPose(0, 0, 0);
 
 
 	back_left_mg.tare_position_all();
@@ -22,29 +19,26 @@ void initialize() {
 	front_left_motor.tare_position();
 	front_right_motor.tare_position();
 
-	/*
-	pros::Task screen_task([&]() {
-        while (true) {
-            pros::lcd::print(5, "X: %f", chassis.getPose().x);
-            pros::lcd::print(6, "Y: %f", chassis.getPose().y);
-            pros::lcd::print(7, "Theta: %f", chassis.getPose().theta);
-            pros::delay(50);
-        }
-    });
-	*/
-
-
 	
 }
 
 
-void disabled() {}
+void disabled() {
 
 
-void competition_initialize() {}
+}
 
 
-void autonomous() {}
+void competition_initialize() {
+
+
+}
+
+
+void autonomous() {
+
+
+}
 
 
 void opcontrol() {
@@ -55,19 +49,19 @@ void opcontrol() {
 
 
 		// X-Drive Kinematics
-		// Front Left = forward - strafe + turn
+		// front Left = forward - strafe + turn
 		int front_left_power = forward - strafe + turn;
 		
-		// Front Right = forward + strafe - turn
+		// front Right = forward + strafe - turn
 		int front_right_power = forward + strafe - turn;
 		
-		// Back Left = forward + strafe + turn
+		// back Left = forward + strafe + turn
 		int back_left_power = forward + strafe + turn;
 		
-		// Back Right = forward - strafe - turn
+		// back Right = forward - strafe - turn
 		int back_right_power = forward - strafe - turn;
 
-		// Set motor powers
+		// set motor powers
 		front_left_motor.move(front_left_power);
 		front_right_motor.move(front_right_power);
 		back_left_mg.move(back_left_power);
